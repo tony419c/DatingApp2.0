@@ -19,9 +19,7 @@ namespace DatingApp2._0.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
-
-            return users;
+            return await _context.Users.ToListAsync();
         }
 
         [HttpGet("{id}")] // /api/users/2
