@@ -15,8 +15,7 @@ export class RegisterComponent {
 
   register() {
     this.accountService.register(this.model).subscribe({
-      next: response => {
-        console.log(response);
+      next: () => {
         this.cancel();
       },
       error: error1 => console.log(error1)
