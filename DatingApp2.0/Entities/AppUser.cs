@@ -1,4 +1,6 @@
-﻿namespace DatingApp2._0.Entities
+﻿using DatingApp2._0.Extensions;
+
+namespace DatingApp2._0.Entities
 {
     public class AppUser
     {
@@ -32,5 +34,10 @@
 
         //public List<Photo> Photos { get; set; } = new List<Photo>();
         public List<Photo> Photos { get; set; } = new();
+
+        public int GetAge()
+        {
+            return DateOfBirth.CalculateAge();
+        }
     }
 }
