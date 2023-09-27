@@ -15,6 +15,7 @@ namespace DatingApp2._0.Extensions
             });
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
