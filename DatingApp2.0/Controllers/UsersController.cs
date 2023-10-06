@@ -3,6 +3,7 @@ using DatingApp2._0.Data;
 using DatingApp2._0.DTOs;
 using DatingApp2._0.Entities;
 using DatingApp2._0.Extensions;
+using DatingApp2._0.Helpers;
 using DatingApp2._0.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,12 @@ namespace DatingApp2._0.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
-            var users = await _userRepository.GetMembersAsync();
+            var users = await _userRepository.GetMembersAsync(userParams);
+
+            Response.AddPagenationHeader(new PaginationHeader(users.CurrentPage, users.PageSize,
+                users.TotalCount, users.TotalPages));
 
             return Ok(users);
         }
@@ -77,7 +81,10 @@ namespace DatingApp2._0.Controllers
 
             user.Photos.Add(photo);
 
-            if (await _userRepository.SaveAllAsync()) return _mapper.Map<PhotoDto>(photo);
+            if (await _userRepository.SaveAllAsync())
+            {
+                //return CreatedAtAction(nameof(GetUser));
+            }
 
             return BadRequest("Problem adding photo.");
         }
