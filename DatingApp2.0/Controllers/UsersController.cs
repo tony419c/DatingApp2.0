@@ -42,7 +42,7 @@ namespace DatingApp2._0.Controllers
         [HttpGet("{username}")] // /api/users/2
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            return await _userRepository.GetMemberAsync(username);
+            return Ok(await _userRepository.GetMemberAsync(username));
         }
 
         [HttpPut]
