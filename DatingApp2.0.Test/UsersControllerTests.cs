@@ -1,7 +1,6 @@
 using DatingApp2._0.Controllers;
 using DatingApp2._0.DTOs;
 using DatingApp2._0.Entities;
-using DatingApp2._0.Extensions;
 using DatingApp2._0.Interfaces;
 using FluentAssertions;
 using FluentAssertions.AspNetCore.Mvc;
@@ -9,7 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Security.Claims;
-using Xunit;
 
 namespace DatingApp2._0.Test
 {
